@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     BsDropdownModule.forRoot(),
-    ToastrModule.forRoot({
+    ToastrModule.forRoot({       //Import module for toastrModule
       positionClass: 'toast-bottom-right'
     }),
   ],

@@ -8,14 +8,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   //@Input() usersFromComponent: any; //using for recive data from parente
   @Output() cancelRegister = new EventEmitter();  //using for send data to parent component
   model: any = {}
 
-
-  constructor(private accountService: AccountService, 
-              private toastr: ToastrService
-             ) { }
+  constructor(private accountService: AccountService, private toastr: ToastrService) { }
   ngOnInit(): void {
 
   }
@@ -26,7 +24,7 @@ export class RegisterComponent implements OnInit {
         console.log(response);
         this.cancel()
       },
-      error: error =>{this.toastr.error(error.error), console.log(error) }
+      error: error =>{this.toastr.error(error.error)}
     })
   }
 

@@ -4,6 +4,7 @@ import { inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
 
+//Use for protect route in web site, its only client validation
 export const authGuard: CanActivateFn = (route, state) => {
   const accountService = inject(AccountService);
   const toastr = inject(ToastrService);
