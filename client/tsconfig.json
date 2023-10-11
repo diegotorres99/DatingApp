@@ -9,6 +9,7 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    //"strictPropertyInitialization": false, -> Permit use class member inside component 
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
