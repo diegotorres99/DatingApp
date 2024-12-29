@@ -11,6 +11,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError(error => {
       if(error){
+
         switch(error.status){
           case 400:
             if(error.error.errors){
@@ -43,6 +44,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             toastr.error('Something unexpected went wrong')
             break;
         }
+        
       }
       throw error;
     })

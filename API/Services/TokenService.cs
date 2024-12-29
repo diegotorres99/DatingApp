@@ -12,6 +12,7 @@ namespace API.Services
         public string CreateToken(AppUser user)
         {
             var tokenKey = config["tokenKey"] ?? throw new Exception("Cannot access tokenKey from appsettings");
+            
             if (tokenKey.Length < 64) throw new Exception("Your tokenKey needs to be longer");
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
 

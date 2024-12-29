@@ -1,9 +1,7 @@
-
 using System.Security.Cryptography;
 using System.Text;
 using API.Data;
 using API.DTOs;
-using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,23 +17,24 @@ namespace API.Controllers;
                 return BadRequest("User es taken!");
             }
             
-            using var hmac = new HMACSHA256();
+            return Ok();
+            // using var hmac = new HMACSHA256();
             
-            var user = new AppUser 
-            {
-                UserName = registerDto.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key
-            };
+            // var user = new AppUser 
+            // {
+            //     UserName = registerDto.Username.ToLower(),
+            //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+            //     PasswordSalt = hmac.Key
+            // };
 
-            context.Users.Add(user);
-            await context.SaveChangesAsync();
+            // context.Users.Add(user);
+            // await context.SaveChangesAsync();
 
-            return new UserDto
-            {
-                Username = user.UserName,
-                Token = tokenService.CreateToken(user)
-            };
+            // return new UserDto
+            // {
+            //     Username = user.UserName,
+            //     Token = tokenService.CreateToken(user)
+            // };
         }
 
         [HttpPost("login")]
@@ -50,7 +49,7 @@ namespace API.Controllers;
             var ComputeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
             for (int i = 0; i < ComputeHash.Length; i++){
-                if(ComputeHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
+                //if(ComputeHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
             }
 
             return new UserDto 

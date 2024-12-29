@@ -5,7 +5,6 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { ListComponent } from './list/list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { authGuard } from './_guards/auth.guard';
-import { TestBed } from '@angular/core/testing';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
