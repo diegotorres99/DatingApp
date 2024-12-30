@@ -18,9 +18,12 @@ namespace API.Data.Migrations
                 .SingleOrDefaultAsync();
         }
 
-        public Task<IEnumerable<MemberDto>> GetMembersAsync()
+        public async Task<IEnumerable<MemberDto>> GetMembersAsync()
         {
-            throw new NotImplementedException();
+            return await context.Users
+                .Include(x => x.Photos)
+                .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
+                .ToListAsync();
         }
 
         public async Task<AppUser?> GetUserByIdAsync(int id)

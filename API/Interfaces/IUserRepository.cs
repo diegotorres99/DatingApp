@@ -1,6 +1,5 @@
 using API.DTOs;
 using API.Entities;
-using AutoMapper.Execution;
 
 namespace API.Interfaces
 {
