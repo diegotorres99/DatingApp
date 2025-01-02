@@ -18,11 +18,17 @@ export class NavComponent {
   private router = inject(Router);
   private toastr = inject(ToastrService);
   loggedIn = false;
-  model: any =  {};
 
+  model: any =  {
+    //Temporal data
+    username:'Lisa',
+    password: 'Pa$$w0rd'
+  };
+
+  
   login(){
     this.accountService.login(this.model).subscribe({
-      next: _ => {
+      next: _ => {   
          this.router.navigateByUrl('/members')
       },
       error : error => this.toastr.error(error.error)
