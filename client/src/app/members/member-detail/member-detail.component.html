@@ -36,11 +36,11 @@
                     <h4>Description:</h4>
                     <p>{{member.introduction || 'No description available'}}</p>
                     <h4>Looking for:</h4>
-                    <p>{{member.interest || 'No information available'}}</p>
+                    <p>{{member.interests || 'No information available'}}</p>
                 </tab>
                 <tab heading="Interests">
                     <h4>Interests:</h4>
-                    <p>{{member.interest || 'No information available'}}</p>
+                    <p>{{member.interests || 'No information available'}}</p>
                 </tab>
                 <tab heading="Photos" #photoTab="tab">
                     @if (photoTab.active) {

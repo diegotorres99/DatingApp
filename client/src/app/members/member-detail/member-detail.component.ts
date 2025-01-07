@@ -8,7 +8,6 @@ import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 @Component({
   selector: 'app-member-detail',
   standalone: true,
-  // imports: [TabsModule],
   imports: [TabsModule, GalleryModule],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.css'
