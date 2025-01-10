@@ -44,10 +44,11 @@
                 </tab>
                 <tab heading="Photos" #photoTab="tab">
                     @if (photoTab.active) {
-                        <gallery 
+                    <gallery 
                         [items]="images"
-                        class="gallery" >
-                    </gallery>
+                        [itemAutosize]="true"
+                        class="gallery" 
+                    ></gallery>
                     }
                 </tab>
                 <tab heading="Messages">
