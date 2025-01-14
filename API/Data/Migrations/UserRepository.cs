@@ -13,7 +13,7 @@ namespace API.Data.Migrations
         public async Task<MemberDto?> GetMemberAsync(string username)
         {
             return await context.Users
-                .Where(u => u.Username == username)
+                .Where(u => u.UserName == username)
                 .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();
         }
@@ -35,7 +35,7 @@ namespace API.Data.Migrations
         {
             return await context.Users
             .Include(x => x.Photos)
-            .SingleOrDefaultAsync(x => x.Username == username);
+            .SingleOrDefaultAsync(x => x.UserName == username);
         }
 
         public async Task<IEnumerable<AppUser?>> GetUsersAsync()
