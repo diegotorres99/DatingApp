@@ -1,4 +1,5 @@
 
+using System;
 using API.DTOs;
 using API.Entities;
 using API.Helpers;
@@ -29,6 +30,11 @@ namespace API.Data.Migrations
             {
                 query = query.Where(x => x.Gender == userParams.Gender);
             }
+
+            var minDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MaxAge -1));
+            var maxDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge)); 
+            
+            query = query.Where(x => x.DateOfBirth >= minDob && x.DateOfBirth <= maxDob);
 
             return await PagedList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>(mapper.ConfigurationProvider), 
                 userParams.PageNumber, userParams.PageSize);
