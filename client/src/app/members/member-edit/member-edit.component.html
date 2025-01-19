@@ -17,8 +17,8 @@
                     <h5 class="card-title">{{member.knownAs || 'Unknown'}}</h5>
                     <div><strong>Location:</strong><p>{{member.country || 'N/A'}}</p></div>
                     <div><strong>Age:</strong><p>{{member.age || 'N/A'}}</p></div>
-                    <div><strong>Last Active:</strong><p>{{member.lastActive || 'No data available'}}</p></div>
-                    <div><strong>Member since:</strong><p>{{member.created || 'Unknown'}}</p></div>
+                    <div><strong>Last Active:</strong><p>{{member.lastActive |timeago}}</p></div>
+                    <div><strong>Member since:</strong><p>{{member.created | date: 'longDate'}}</p></div>
                 </div>
                 <div class="card-footer">
                     <div class="btn-group d-flex">
