@@ -1,0 +1,1 @@
+A modern dating application developed with ASP.NET Core API and Angular. The backend is powered by ASP.NET Core, ensuring robust data management and authentication, while Angular delivers a dynamic, responsive user interface SPA.
