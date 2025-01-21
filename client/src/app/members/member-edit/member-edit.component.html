@@ -24,7 +24,9 @@
                     <div class="btn-group d-flex">
                         <button  form="editForm" 
                                  type="submit" 
-                                 class="btn btn-success col-12">
+                                 class="btn btn-success col-12"
+                                 [disabled]="!editForm.dirty"
+                        >
                             Save Changes
                         </button>
                     </div>

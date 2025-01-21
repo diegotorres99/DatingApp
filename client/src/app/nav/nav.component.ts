@@ -20,7 +20,7 @@ export class NavComponent {
 
   model: any =  {
     //Temporal data
-    username:'Dave',
+    username:'lisa',
     password: 'Pa$$w0rd'
   };
 
