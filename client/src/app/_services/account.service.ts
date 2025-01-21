@@ -3,7 +3,7 @@ import { inject, Injectable, signal, ɵgetInjectableDef } from '@angular/core';
 import { User } from '../_models/user';
 import { map } from 'rxjs';
 import { enviroment } from '../../environments/enviroment';
-import { LikesService } from '../services/likes.service';
+import { LikesService } from './likes.service';
 
 @Injectable({
   providedIn: 'root'
