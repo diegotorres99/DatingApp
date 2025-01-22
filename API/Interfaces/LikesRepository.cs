@@ -31,7 +31,7 @@ namespace API.Interfaces
 
         public async Task<UserLike?> GetUserLike(int sourceUserId, int targetUserId)
         {
-            return await context.Likes.FindAsync(sourceUserId, targetUserId);
+            return await context.Likes.FindAsync(sourceUserId, targetUserId)!;
         }
 
         public async Task<PagedList<MemberDto>> GetUserLikes(LikesParams likesParams)
