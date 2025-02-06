@@ -7,7 +7,7 @@ import { Photo } from '../_models/Photo';
 import { PaginatedResult } from '../_models/pagination';
 import { UserParams } from '../_models/userParams';
 import { AccountService } from './account.service';
-import { setPaginationHeaders, setPaginationResponse } from './paginationHelper';
+import { setPaginationHeaders, setPaginatedResponse } from './paginationHelper';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class MembersService {
   getMembers() {
 
     const response = this.memberCache.get(Object.values(this.userParams()).join('-'));
-    if(response) return setPaginationResponse(response, this.paginatedResult);
+    if(response) return setPaginatedResponse(response, this.paginatedResult);
 
     let params = setPaginationHeaders(this.userParams().pageNumber, this.userParams().pageSize);
 
@@ -41,7 +41,7 @@ export class MembersService {
     return this.http.get<Member[]>(this.baseUrl + 'users', {
       observe: 'response', params }).subscribe({
       next: response => {
-        setPaginationResponse(response, this.paginatedResult);
+        setPaginatedResponse(response, this.paginatedResult);
         this.memberCache.set(Object.values(UserParams).join('-'), response);
       }
     })
