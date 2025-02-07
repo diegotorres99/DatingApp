@@ -20,7 +20,7 @@ public class AutoMapperProfiles : Profile
         CreateMap<Message, MessageDto>()
             .ForMember(d => d.SenderPhotoUrl, 
                 o => o.MapFrom(s => s.Sender.Photos.FirstOrDefault(x => x.IsMain)!.Url))
-            .ForMember(d => d.SenderPhotoUrl, 
+            .ForMember(d => d.RecipientPhotoUrl, 
                 o => o.MapFrom(s => s.Recipient.Photos.FirstOrDefault(x => x.IsMain)!.Url))
             ;
     }

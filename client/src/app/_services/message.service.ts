@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { enviroment } from '../../environments/enviroment';
-import { HttpBackend, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { PaginatedResult } from '../_models/pagination';
 import { Message } from '../_models/message';
 import { setPaginationHeaders, setPaginatedResponse } from './paginationHelper';
@@ -28,4 +28,11 @@ export class MessageService {
     return this.http.get<Message[]>(this.baseUrl + 'messages/thread/' + username)
   }
 
+  sendMessage(username: string, content: string){
+    return this.http.post<Message>(this.baseUrl + 'messages', {recipientUsername: username, content})
+  }
+
+  deleteMessage(id: number){
+    return this.http.delete(this.baseUrl + 'messages/' + id);
+  }
 }
