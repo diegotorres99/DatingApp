@@ -25,7 +25,7 @@ namespace API.Controllers
             var sender = await userRepository.GetUserByUsernameAsync(username);
             var recipient = await userRepository.GetUserByUsernameAsync(createMessageDto.RecipientUsername);
 
-            if(recipient == null || sender == null) return BadRequest("Cannot send message at this time");
+            if(recipient == null || sender == null || recipient.UserName == null || sender.UserName == null) return BadRequest("Cannot send message at this time");
 
             var message = new Message 
             {
@@ -62,7 +62,6 @@ namespace API.Controllers
         {
             var currentUsername = User.GetUsername();
             return Ok(await messageRepository.GetMessageThread(currentUsername, username));
-
         }
 
         [HttpDelete("{id}")]
