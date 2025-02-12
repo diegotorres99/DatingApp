@@ -3,7 +3,7 @@ import { Member } from '../../_models/member';
 import { DecimalPipe, NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { FileUploader, FileUploadModule } from 'ng2-file-upload';
 import { AccountService } from '../../_services/account.service';
-import { enviroment } from '../../../environments/enviroment';
+import { environment } from '../../../environments/environment';
 import { Photo } from '../../_models/Photo';
 import { MembersService } from '../../_services/members.service';
 
@@ -21,7 +21,7 @@ export class PhotoEditorComponent implements OnInit {
   member = input.required<Member>();
   uploader?: FileUploader;
   hasBaseDropZoneOver = false;
-  baseUrl = enviroment.apiUrl;
+  baseUrl = environment.apiUrl;
   memberChange = output<Member>();
 
   ngOnInit(): void {

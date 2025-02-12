@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { enviroment } from '../../environments/enviroment';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { PaginatedResult } from '../_models/pagination';
 import { Message } from '../_models/message';
@@ -11,8 +11,8 @@ import { User } from '../_models/user';
   providedIn: 'root'
 })
 export class MessageService {
-  baseUrl = enviroment.apiUrl;
-  hubUrl = enviroment.hubsUrl;
+  baseUrl = environment.apiUrl;
+  hubUrl = environment.hubsUrl;
   private http = inject(HttpClient);
   private hubConnection?: HubConnection;
   paginatedResult = signal<PaginatedResult<Message[]> | null>(null);
@@ -60,8 +60,8 @@ export class MessageService {
     return this.http.get<Message[]>(this.baseUrl + 'messages/thread/' + username)
   }
 
-  async sendMessage(username: string, content: string){
-    return this.hubConnection?.invoke('SendMessage1', {recipientUsername: username, content})
+  async sendMessage(username: string, content: string) {
+    return this.hubConnection?.invoke('SendMessage', {recipientUsername: username, content})
   }
 
   deleteMessage(id: number){

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { User } from '../_models/user';
 import { map } from 'rxjs';
-import { enviroment } from '../../environments/enviroment';
+import { environment } from '../../environments/environment';
 import { LikesService } from './likes.service';
 import { PresenceService } from './presence.service';
 
@@ -13,7 +13,7 @@ export class AccountService {
   private http = inject(HttpClient);
   private likeService = inject(LikesService);
   private presenceService = inject(PresenceService);
-  baseUrl = enviroment.apiUrl;
+  baseUrl = environment.apiUrl;
   currentUser = signal<User | null>(null);
   roles = computed(() => {
     const user = this.currentUser();
