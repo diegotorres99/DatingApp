@@ -22,14 +22,21 @@ namespace API.Data.Migrations
 
     public async Task<MemberDto> GetMemberAsync(string username, bool isCurrentUser)
     {
-        var query =  context.Users
+        var query = context.Users
             .Where(x => x.UserName == username)
-            .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
             .AsQueryable();
-            if (isCurrentUser) query = query.IgnoreQueryFilters();
-            return await query.FirstOrDefaultAsync();
-    }
 
+        if (isCurrentUser)
+        {
+            query = query.IgnoreQueryFilters();
+        }
+
+        var memberDto = await query
+            .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
+            .FirstOrDefaultAsync();
+
+        return memberDto ?? new MemberDto() { Gender = "" }; 
+    }
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
             var query = context.Users.AsQueryable();
