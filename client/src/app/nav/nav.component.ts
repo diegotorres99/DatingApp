@@ -20,12 +20,10 @@ export class NavComponent {
   loggedIn = false;
 
   model: any =  {
-    //Temporal data
-    username:'lisa',
-    password: 'Pa$$w0rd'
+    username:'',
+    password: ''
   };
 
-  
   login(){
     this.accountService.login(this.model).subscribe({
       next: _ => {   
@@ -39,5 +37,4 @@ export class NavComponent {
     this.accountService.logout();
     this.router.navigateByUrl('/');
   }
-
 }
