@@ -44,7 +44,7 @@ namespace API.Data
             .HasOne(s =>  s.TargetUser)
             .WithMany(l => l.LikedByUsers)
             .HasForeignKey(s => s.TargetUserId)
-            .OnDelete(DeleteBehavior.NoAction); //Use DeleteBehavior.Cascade to other data bases
+            .OnDelete(DeleteBehavior.NoAction); //Use DeleteBehavior.Cascade to other data bases / NoAction for SQL Server
 
             builder.Entity<Message>()
                 .HasOne(x => x.Recipient)
